@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;i&apos; in &apos;CategoricalCumulativeFrequency.main(...)&apos; to &apos;col&apos;&#x0D;&#x0A;- Original project: &apos;criteo&apos;&#x0D;&#x0A;- Original element: &apos;CategoricalCumulativeFrequency.main(String[]).i&apos;&#x0D;&#x0A;- Renamed element: &apos;i&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;i&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/&lt;{CategoricalCumulativeFrequency.java[CategoricalCumulativeFrequency~main~\[QString;@i!567!575!571!571!I!0!false" name="col" references="true" stamp="1530043240061" version="1.0"/>
+</session>

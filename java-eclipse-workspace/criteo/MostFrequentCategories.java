@@ -1,0 +1,70 @@
+import java.io.File;
+import java.util.ArrayList;
+import java.util.PriorityQueue;
+import java.util.Scanner;
+
+public class MostFrequentCategories {
+
+	static int size = 1000;
+	
+	public static void main(String[] args) {
+		
+		class Category implements Comparable<Category> {
+			String name;
+			int freq;
+			
+			public Category(String name, int freq) {
+				super();
+				this.name = name;
+				this.freq = freq;
+			}
+			
+			@Override
+			public String toString() {
+				return "Category[name=" + name + ", freq=" + freq + "]";
+			}
+
+			@Override
+			public int compareTo(Category other) {
+				return other.freq - freq;
+			}		
+		}
+		
+		PriorityQueue<Category> catQueue = new PriorityQueue<>();
+
+		// Get field names.
+		try (Scanner fieldsIn = new Scanner(new File("../../fields.txt"))) {
+			String[] fieldNames = fieldsIn.nextLine().split("\t");
+//			System.out.println(Arrays.toString(fieldNames));
+
+			// For each category field name, put up to the first <size> elements into the catQueue, prioritized by max freq.
+			for (int col = 0; col < fieldNames.length; col++) {
+				String fieldName = fieldNames[col];
+				if (fieldName.startsWith("C")) {
+					try (Scanner in = new Scanner(new File(fieldName + "-cum-freq.txt"))) {
+						for (int i = 0; i < size && in.hasNextLine(); i++) {
+							String[] row = in.nextLine().split("\t");
+							catQueue.offer(new Category(row[0], Integer.parseInt(row[1])));
+						}
+					}
+				}
+			}
+
+			// Print the <size> most frequent elements, one per line.
+			ArrayList<String> catNames = new ArrayList<>();
+			for (int i = 0; i < size; i++) {
+				Category cat = catQueue.poll();
+//				if (cat.name.endsWith(":"))
+//					System.out.println(cat);
+				catNames.add(cat.name);
+			}
+//			Collections.sort(catNames);
+			for (String name : catNames)
+				System.out.println(name);			
+
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}

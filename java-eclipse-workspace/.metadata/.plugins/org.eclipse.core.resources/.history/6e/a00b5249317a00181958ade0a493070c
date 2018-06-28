@@ -1,0 +1,33 @@
+import java.util.PriorityQueue;
+
+public class MostFrequentCategories {
+
+	int size = 1000;
+	
+	class Category implements Comparable<Category> {
+		String name;
+		int freq;
+		
+		public Category(String name, int freq) {
+			super();
+			this.name = name;
+			this.freq = freq;
+		}
+		
+		@Override
+		public String toString() {
+			return "Category[name=" + name + ", freq=" + freq + "]";
+		}
+
+		@Override
+		public int compareTo(Category other) {
+			// TODO Auto-generated method stub
+			return other.freq - freq;
+		}		
+	}
+	
+	public static void main(String[] args) {
+		PriorityQueue<Category> catQueue = new PriorityQueue<>();
+	}
+
+}
